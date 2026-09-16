@@ -1,0 +1,50 @@
+# ─── Dependencies ───
+node_modules/
+.pnp/
+.yarn/
+
+# ─── Build artifacts ───
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# ─── Runtime data (privacy-sensitive — never commit) ───
+db/
+upload/
+dev.log
+server.log
+*.log
+
+# ─── Environment & secrets ───
+.env
+.env.local
+.env.development
+.env.production
+.z-ai-config
+
+# ─── IDE / OS ───
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ─── Sandbox / dev tooling (not part of the app) ───
+.zscripts/
+tool-results/
+skills/
+scripts/
+
+# ─── Optional reference materials (not part of the app code) ───
+# Download folder contains Sprint 0 planning artifacts (PDFs, DOCX) —
+# not required for the running app. Comment out to include.
+download/
+
+# ─── Test coverage ───
+coverage/
+.nyc_output/
+
+# ─── Misc ───
+*.pid
+.DS_Store

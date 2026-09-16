@@ -1,0 +1,51 @@
+// LegalLens Prisma schema
+// Documents + Analyses stored locally. 24h auto-deletion enforced by cron.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Document {
+  id           String     @id @default(cuid())
+  fileName     String
+  fileSize    Int
+  fileType    String // mime
+  fileHash    String // SHA-256, for dedup
+  filePath    String // relative path under /home/z/my-project/upload/
+  pageCount   Int       @default(0)
+  textPreview  String    @default("") // first 2000 chars, for UI display
+  fullText    String    @default("") // extracted full text — used for RAG
+  status      String    @default("uploaded") // uploaded | parsing | ready | error
+  errorMessage String?
+  createdAt   DateTime  @default(now())
+  expiresAt   DateTime  // 24h from createdAt — enforced by cleanup cron
+  analyses    Analysis[]
+}
+
+model Analysis {
+  id           String    @id @default(cuid())
+  documentId   String
+  document     Document  @relation(fields: [documentId], references: [id], onDelete: Cascade)
+  summaryJson  String    // JSON blob: { documentType, titlePlain, bullets[] }
+  flagsJson    String    // JSON blob: flags[] with severity, citation, bbox
+  jargonJson   String    @default("[]")
+  createdAt    DateTime  @default(now())
+
+  @@index([documentId])
+}
+
+model ChatMessage {
+  id          String   @id @default(cuid())
+  documentId  String
+  role        String // user | assistant
+  content     String
+  citationsJson String @default("[]")
+  createdAt   DateTime @default(now())
+
+  @@index([documentId])
+}
