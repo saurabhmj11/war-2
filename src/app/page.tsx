@@ -802,7 +802,7 @@ const RiskFlagsCard = React.memo(({
   flags: RiskFlag[];
   documentId: string;
   onFocusSource: (page: number, bbox?: [number, number, number, number], label?: string) => void;
-}) {
+}) => {
   if (!flags || flags.length === 0) {
     return (
       <Card>
