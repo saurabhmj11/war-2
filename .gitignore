@@ -8,7 +8,8 @@ node_modules/
 out/
 build/
 *.tsbuildinfo
-next-env.d.ts
+# next-env.d.ts is intentionally committed — it provides Next.js type declarations
+# for editors that open the repo without running `next dev` first.
 
 # ─── Runtime data (privacy-sensitive — never commit) ───
 db/

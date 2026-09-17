@@ -71,6 +71,14 @@ RULES:
 
 Document text (truncated to first 30,000 chars to fit context window):`;
 
+/**
+ * Calls the AI Model to perform a comprehensive analysis of the legal document.
+ * 
+ * @param documentText - The raw extracted text of the legal document.
+ * @param level - The target reading level ("simpler" or "standard").
+ * @param language - The target output language ("en" or "es").
+ * @returns A promise that resolves to the structured `AnalysisResult`.
+ */
 async function callLlmForAnalysis(
   documentText: string,
   level: ReadingLevel = "standard",

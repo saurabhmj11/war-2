@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import type { DragEvent, ChangeEvent, RefObject, ReactNode } from "react";
 import { Upload, FileText, Loader2, AlertTriangle, ShieldCheck, Sparkles, X, MessageCircleQuestion, BookOpen, Scale, Clock, GitCompareArrows, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -10,8 +11,9 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { PdfViewer } from "@/components/legallens/PdfViewer";
-import { CompareDialog } from "@/components/legallens/CompareDialog";
+import dynamic from "next/dynamic";
+const PdfViewer = dynamic(() => import("@/components/legallens/PdfViewer").then((mod) => mod.PdfViewer), { ssr: false });
+const CompareDialog = dynamic(() => import("@/components/legallens/CompareDialog").then((mod) => mod.CompareDialog), { ssr: false });
 import { TrustScoreBadge, PreSigningChecklistCard, MultiAskCard, Dashboard, ImpactAnalysisCard } from "@/components/legallens/Dashboard";
 import { toast } from "sonner";
 import type { AnalysisResult, DocumentMeta, QaResult, RiskFlag, SummaryBullet, JargonTerm } from "@/lib/legallens/types";
@@ -197,13 +199,13 @@ export default function Home() {
     }
   }, [doc, language]);
 
-  const handleDrop = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+  const handleDrop = useCallback((e: DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files?.[0];
     if (file) handleFile(file);
   }, [handleFile]);
 
-  const handleFileInput = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileInput = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) handleFile(file);
   }, [handleFile]);
@@ -330,7 +332,7 @@ export default function Home() {
   // ─── Layout ───
   return (
     <div className="min-h-screen flex flex-col bg-background">
-      <header className="border-b sticky top-0 z-30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <header className="border-b sticky top-0 z-30 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60">
         <div className="container mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="h-9 w-9 rounded-lg bg-orange-500/90 flex items-center justify-center">
@@ -437,7 +439,7 @@ export default function Home() {
         <div className="container mx-auto max-w-7xl px-4 py-4 text-center text-xs text-muted-foreground">
           <p>
             <ShieldCheck className="inline h-3 w-3 mr-1" />
-            LegalLens is not a lawyer and does not give legal advice. Documents auto-delete after 24 hours. We never train on your data.
+            LegalLens is not a lawyer and does not give legal advice. Built for the "AI for Legal Assistance & Access" challenge. Documents auto-delete after 24 hours. We never train on your data.
           </p>
         </div>
       </footer>
@@ -450,12 +452,12 @@ function UploadView({
   onFile, onDrop, onPickFile, uploading, uploadProgress, fileInputRef, onFileInput,
 }: {
   onFile: (f: File) => void;
-  onDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+  onDrop: (e: DragEvent<HTMLDivElement>) => void;
   onPickFile: () => void;
   uploading: boolean;
   uploadProgress: number;
-  fileInputRef: React.RefObject<HTMLInputElement | null>;
-  onFileInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  fileInputRef: RefObject<HTMLInputElement | null>;
+  onFileInput: (e: ChangeEvent<HTMLInputElement>) => void;
 }) {
   const [dragging, setDragging] = useState(false);
   return (
@@ -521,7 +523,7 @@ function UploadView({
   );
 }
 
-function FeatureCard({ icon, title, body }: { icon: React.ReactNode; title: string; body: string }) {
+function FeatureCard({ icon, title, body }: { icon: ReactNode; title: string; body: string }) {
   return (
     <Card className="p-4 bg-card/50">
       <div className="flex items-center gap-2 mb-2">
@@ -569,7 +571,7 @@ function ResultsView({
         </p>
         <Card className="mt-8 p-6 bg-muted/30">
           <div className="flex items-center gap-3">
-            <FileText className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+            <FileText className="h-5 w-5 text-muted-foreground shrink-0" />
             <div className="min-w-0">
               <p className="text-sm font-medium truncate">{doc.fileName}</p>
               <p className="text-xs text-muted-foreground">{(doc.fileSize / 1024 / 1024).toFixed(2)} MB · {doc.pageCount} pages</p>
@@ -642,7 +644,7 @@ function ResultsView({
               <div className="border-b px-4 py-2 flex items-center justify-between bg-muted/30">
                 <div className="flex items-center gap-2 text-xs">
                   <FileText className="h-3 w-3" />
-                  <span className="font-medium truncate max-w-[200px]">{doc.fileName}</span>
+                  <span className="font-medium truncate max-w-50">{doc.fileName}</span>
                 </div>
                 <Button size="sm" variant="ghost" onClick={() => { /* keep open */ }}>
                   <X className="h-3 w-3" />
@@ -690,14 +692,16 @@ function SettingsToolbar({
           {/* Reading level toggle */}
           <div className="flex items-center gap-1 text-xs">
             <span className="text-muted-foreground mr-1">Reading level:</span>
-            <div className="inline-flex rounded-md border bg-muted/30 p-0.5">
+            <div className="inline-flex rounded-md border bg-muted/30 p-0.5" role="group" aria-label="Reading Level">
               <button
+                aria-label="Set reading level to standard"
                 onClick={() => onLevelChange("standard")}
                 className={`px-2 py-0.5 rounded text-xs transition-colors ${level === "standard" ? "bg-orange-500 text-white" : "text-muted-foreground hover:text-foreground"}`}
               >
                 Standard
               </button>
               <button
+                aria-label="Set reading level to simpler"
                 onClick={() => onLevelChange("simpler")}
                 className={`px-2 py-0.5 rounded text-xs transition-colors ${level === "simpler" ? "bg-orange-500 text-white" : "text-muted-foreground hover:text-foreground"}`}
               >
@@ -709,14 +713,16 @@ function SettingsToolbar({
           {/* Language toggle */}
           <div className="flex items-center gap-1 text-xs">
             <span className="text-muted-foreground mr-1">Language:</span>
-            <div className="inline-flex rounded-md border bg-muted/30 p-0.5">
+            <div className="inline-flex rounded-md border bg-muted/30 p-0.5" role="group" aria-label="Language Setting">
               <button
+                aria-label="Set language to English"
                 onClick={() => onLanguageChange("en")}
                 className={`px-2 py-0.5 rounded text-xs transition-colors ${language === "en" ? "bg-orange-500 text-white" : "text-muted-foreground hover:text-foreground"}`}
               >
                 EN
               </button>
               <button
+                aria-label="Set language to Spanish"
                 onClick={() => onLanguageChange("es")}
                 className={`px-2 py-0.5 rounded text-xs transition-colors ${language === "es" ? "bg-orange-500 text-white" : "text-muted-foreground hover:text-foreground"}`}
               >
@@ -768,7 +774,7 @@ function SummaryTopCard({
         <ul className="space-y-2">
           {analysis.summaryBullets.map((b: SummaryBullet, i: number) => (
             <li key={i} className="text-sm leading-relaxed flex gap-2">
-              <span className="text-orange-600 font-bold flex-shrink-0">•</span>
+              <span className="text-orange-600 font-bold shrink-0">•</span>
               <span className="flex-1">
                 {b.text}{" "}
                 <CitationChip citation={b.citation} onClick={() => {
@@ -781,7 +787,7 @@ function SummaryTopCard({
         </ul>
         <Separator />
         <div className="flex items-start gap-2 text-xs text-muted-foreground">
-          <ShieldCheck className="h-3 w-3 mt-0.5 flex-shrink-0" />
+          <ShieldCheck className="h-3 w-3 mt-0.5 shrink-0" />
           <p>{analysis.disclaimer}</p>
         </div>
       </CardContent>
@@ -828,6 +834,7 @@ function RiskFlagsCard({
 function RiskFlagRow({
   flag, documentId, onFocusSource,
 }: {
+  key?: number;
   flag: RiskFlag;
   documentId: string;
   onFocusSource: (page: number, bbox?: [number, number, number, number], label?: string) => void;
@@ -1044,6 +1051,7 @@ function QaResultView({
 function CitationChip({
   citation, onClick,
 }: {
+  key?: number;
   citation: string;
   onClick: () => void;
 }) {
@@ -1068,7 +1076,7 @@ function EscalationCard({
     <Card className="border-amber-500/50 bg-amber-500/5">
       <CardContent className="pt-4">
         <div className="flex items-start gap-2">
-          <AlertTriangle className="h-5 w-5 text-amber-600 flex-shrink-0 mt-0.5" />
+          <AlertTriangle className="h-5 w-5 text-amber-600 shrink-0 mt-0.5" />
           <div className="flex-1">
             <p className="text-sm font-semibold text-amber-900 mb-1">
               {category === "eviction" ? "Eviction notice" :

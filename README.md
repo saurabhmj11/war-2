@@ -1,5 +1,6 @@
 # LegalLens
 
+> Built for the "AI for Legal Assistance & Access" challenge.
 > Every person who signs something understands what they're signing.
 
 LegalLens is a privacy-first legal document understanding web app. Drop in any legal document (PDF, DOCX, TXT, photo, or scan) and get a plain-language summary, risk flags with clickable source citations on the original page, grounded Q&A with abstention, side-by-side version comparison, and a per-clause impact analysis showing what a balanced version typically looks like, what could go wrong, and an estimated financial exposure range.
@@ -272,6 +273,127 @@ Tests are deterministic and do not call the LLM — they verify the rule-based g
 | Carmen, 31 — Employee | Offer + severance + non-compete, pressured | Upload all 3 → multi-ask "what am I agreeing to across these?" → answer citing all 3 docs |
 | Priya — Legal-aid paralegal | 40 client docs/week, on-prem requirement | Batch upload → multi-ask → export PDFs for attorney review |
 
+# 100 Use Cases for LegalLens
+
+LegalLens is designed to democratize legal access. Here are 100 real-world scenarios where LegalLens empowers individuals by translating complex legal jargon into plain language.
+
+## 🏠 Housing & Real Estate
+1. **Residential Lease Agreements:** Reviewing a new apartment lease for hidden fees or unusual terms.
+2. **Eviction Notices:** Understanding the exact timeline, rights, and required actions upon receiving an eviction notice.
+3. **Security Deposit Disputes:** Analyzing move-out terms to understand conditions for getting a deposit back.
+4. **HOA Guidelines:** Translating complex Homeowner Association rules and potential fines.
+5. **Mortgage Agreements:** Breaking down the terms, interest rate clauses, and penalties of a home loan.
+6. **Subletting Contracts:** Reviewing the legality and restrictions of subleasing an apartment.
+7. **Property Deed Transfers:** Understanding the implications of signing over property rights.
+8. **Rent Increase Notices:** Checking if a rent increase complies with local rent control laws mentioned in the lease.
+9. **Maintenance Addendums:** Clarifying who is responsible for specific property repairs.
+10. **Short-Term Rental Agreements:** Reviewing Airbnb or VRBO host contracts for liability clauses.
+11. **Commercial Leases:** Helping small business owners understand triple net lease obligations.
+12. **Roommate Agreements:** Formalizing and understanding shared financial responsibilities.
+13. **Brokerage Agreements:** Clarifying exclusivity and commission structures when hiring a real estate agent.
+
+## 💼 Employment & Labor
+14. **Job Offer Letters:** Summarizing compensation, benefits, and at-will employment clauses.
+15. **Non-Disclosure Agreements (NDAs):** Understanding what information can and cannot be shared after leaving a job.
+16. **Non-Compete Clauses:** Analyzing geographical and time-based restrictions for future employment.
+17. **Severance Agreements:** Reviewing what rights are being waived in exchange for severance pay.
+18. **Independent Contractor Agreements:** Clarifying tax liabilities and intellectual property ownership.
+19. **Employee Handbooks:** Summarizing company policies on PTO, harassment, and termination.
+20. **Union Contracts:** Breaking down collective bargaining agreements for individual workers.
+21. **Arbitration Agreements:** Understanding the waiver of the right to sue in court.
+22. **Background Check Consents:** Clarifying what information employers are legally allowed to access.
+23. **Commission Structures:** Decoding complex sales commission payout rules.
+24. **Telecommuting Agreements:** Understanding liability and expense reimbursement for remote work.
+25. **FMLA Requests:** Summarizing the rights and requirements for taking family medical leave.
+26. **Intellectual Property Assignments:** Checking if side projects are claimed by the employer.
+
+## 💳 Consumer & Finance
+27. **Credit Card Terms & Conditions:** Highlighting hidden fees, penalty APRs, and arbitration clauses.
+28. **Personal Loan Agreements:** Summarizing interest rates, repayment schedules, and default consequences.
+29. **Auto Loan Contracts:** Understanding repossession terms and insurance requirements.
+30. **Payday Loan Terms:** Exposing exorbitant interest rates and predatory clauses.
+31. **Student Loan Promissory Notes:** Clarifying deferment options and capitalization rules.
+32. **Debt Collection Letters:** Verifying the legitimacy of the debt and understanding consumer rights under the FDCPA.
+33. **Bank Account Agreements:** Highlighting overdraft fees and minimum balance requirements.
+34. **Gym Memberships:** Finding the exact procedure and penalties for canceling a membership.
+35. **Software Terms of Service (ToS):** Summarizing data privacy and account termination clauses.
+36. **Product Warranties:** Understanding what damages are actually covered and what voids the warranty.
+37. **Subscription Agreements:** Highlighting auto-renewal clauses and cancellation windows.
+38. **Car Lease Agreements:** Clarifying mileage limits and wear-and-tear penalties.
+39. **Crowdfunding Terms:** Understanding backer rights if a project fails to deliver.
+
+## 🏥 Healthcare & Insurance
+40. **Health Insurance Policies:** Summarizing deductibles, copays, and out-of-network coverage.
+41. **Medical Bills:** Cross-referencing itemized bills with standard medical coding descriptions.
+42. **Explanation of Benefits (EOB):** Translating insurance jargon to understand what is owed.
+43. **HIPAA Consent Forms:** Clarifying who exactly can access patient medical records.
+44. **Advanced Directives:** Understanding the scope of living wills and medical power of attorney.
+45. **Life Insurance Policies:** Summarizing payout conditions and exclusions.
+46. **Disability Insurance:** Clarifying the definition of "disability" required to receive benefits.
+47. **Nursing Home Contracts:** Reviewing liability waivers and arbitration clauses for elderly care.
+48. **Dental Plan Agreements:** Highlighting waiting periods and maximum annual benefits.
+49. **Surgical Consent Forms:** Translating the risks and procedures being agreed to.
+50. **Workers' Compensation Forms:** Understanding the rights and limitations of filing a workplace injury claim.
+
+## 🌍 Immigration & Travel
+51. **Visa Applications:** Clarifying the legal requirements and restrictions of specific visa types.
+52. **Sponsorship Affidavits (I-864):** Understanding the financial liabilities of sponsoring an immigrant.
+53. **Asylum Applications:** Summarizing the legal definitions and requirements for seeking asylum.
+54. **Travel Insurance Policies:** Highlighting exclusions for pre-existing conditions or specific activities.
+55. **Airline Conditions of Carriage:** Understanding passenger rights for canceled flights or lost luggage.
+56. **Study Abroad Contracts:** Clarifying liability and refund policies for international programs.
+57. **Citizenship Forms:** Breaking down the legal requirements for naturalization.
+58. **Customs Declarations:** Understanding the legal implications of what is being declared.
+
+## 👨‍👩‍👧‍👦 Family & Personal Law
+59. **Prenuptial Agreements:** Summarizing how assets will be divided and what rights are waived.
+60. **Divorce Decrees:** Clarifying child custody schedules and alimony obligations.
+61. **Child Support Agreements:** Understanding modification rules and enforcement mechanisms.
+62. **Last Will and Testament:** Translating the distribution of assets and executor duties.
+63. **Power of Attorney (Financial):** Clarifying the specific powers granted to an agent.
+64. **Adoption Papers:** Understanding the legal transfer of parental rights.
+65. **Restraining Orders:** Clarifying the exact boundaries, communication rules, and durations.
+66. **Name Change Petitions:** Summarizing the legal steps and requirements.
+67. **Guardianship Documents:** Understanding the legal responsibilities of caring for a minor or incapacitated adult.
+
+## 🚀 Small Business & Freelance
+68. **Client Service Agreements:** Clarifying project scope, payment terms, and revision limits.
+69. **Partnership Agreements:** Summarizing profit distribution, decision-making, and dissolution terms.
+70. **Website Privacy Policies:** Ensuring compliance with standard data collection practices.
+71. **Vendor Contracts:** Reviewing delivery timelines, quality standards, and termination clauses.
+72. **Copyright Assignments:** Understanding the transfer of ownership for creative works.
+73. **Cease and Desist Letters:** Translating the demands and assessing the legal threat level.
+74. **Franchise Agreements:** Clarifying royalty fees, marketing obligations, and territorial rights.
+75. **Event Contracts:** Reviewing cancellation policies and force majeure clauses for venues.
+76. **Affiliate Marketing Agreements:** Understanding payout thresholds and prohibited promotional methods.
+77. **Model Release Forms:** Clarifying how an individual's likeness can be used commercially.
+78. **Non-Profit Bylaws:** Summarizing board member duties and conflict of interest policies.
+
+## 🔒 Privacy, Rights & Miscellaneous
+79. **Social Media Privacy Settings:** Translating what data is sold to third parties.
+80. **Data Breach Notifications:** Understanding personal risk and offered identity theft protection.
+81. **Police Reports:** Clarifying the documented details of an incident for insurance claims.
+82. **Settlement Agreements:** Summarizing the terms and confidentiality requirements of dropping a lawsuit.
+83. **Class Action Notices:** Understanding the right to opt-out and potential compensation.
+84. **Traffic Tickets/Citations:** Clarifying deadlines, points on a license, and options to contest.
+85. **School IEPs (Individualized Education Programs):** Translating the legally mandated accommodations for a student.
+86. **Photo Release Consents:** Understanding where and how personal images can be published.
+87. **Volunteer Liability Waivers:** Clarifying what injuries or damages the organization is not responsible for.
+88. **Cookie Consents:** Summarizing what tracking technologies are being accepted.
+89. **End User License Agreements (EULA):** Highlighting restrictions on reverse engineering or resale.
+90. **Smart Contracts (Text Translation):** Translating the written intent behind blockchain agreements.
+91. **Plea Bargain Offers:** Understanding the exact charges, sentencing, and waived rights.
+92. **Parole/Probation Conditions:** Clarifying travel restrictions, reporting duties, and violations.
+93. **Tax Audit Notices:** Translating the IRS demands and deadlines for providing documentation.
+94. **Mechanic's Liens:** Understanding the legal claim a contractor has placed on a property.
+95. **Defamation Threats:** Analyzing the legal basis and demands of a libel/slander warning.
+96. **Utility Service Agreements:** Highlighting deposit requirements and shut-off conditions.
+97. **Vehicle Title Transfers:** Clarifying the "as-is" clauses and liability release.
+98. **Pet Adoption Contracts:** Understanding return policies and required veterinary care clauses.
+99. **Contest/Sweepstakes Rules:** Translating eligibility requirements and tax liabilities on winnings.
+100. **Right to Repair Agreements:** Understanding how unauthorized repairs impact legal ownership and warranties.
+
+
 ---
 
 ## What LegalLens Is Not
@@ -289,3 +411,4 @@ For high-stakes situations (eviction, criminal, custody, deadline, fraud), we su
 ## License
 
 [MIT](./LICENSE) — © 2026 LegalLens
+
