@@ -49,13 +49,13 @@ The civil justice gap is a mass-market failure: the Legal Services Corporation e
 
 ## Gen AI Services Utilized
 
-The core intelligence of LegalLens is powered by the **Z-AI SDK (`z-ai-web-dev-sdk`)**, utilizing both their Vision Language Models (VLMs) and Large Language Models (LLMs) via Chat Completions. 
+The core intelligence of LegalLens is powered by **Google Gemini**, utilizing both their Vision Language Models (VLMs) and Large Language Models (LLMs) via the Generative AI SDK (wrapped as `z-ai-web-dev-sdk`).
 
-We utilized Gen AI across five primary areas of the application:
-1. **Vision & Layout Extraction (VLM - `glm-4.5v`):** Used to securely process uploads of scanned physical documents, photos, and complex PDFs. The VLM extracts both text and spatial layout (bounding boxes) to enable our "Trust is the Product" feature, where every AI claim links directly to a highlighted section on the original document image.
-2. **Analysis & Risk Flagging (LLM):** Used to generate Flesch-Kincaid ≤8.0 (plain-language) summaries of dense legal text. The LLM identifies high-risk clauses, extracts the exact source text for citations, and flags potential pitfalls.
-3. **Grounded Q&A (LLM):** Powers both single-document and multi-document chat. The LLM is strictly prompted to abstain from answering if the information is not present in the document, preventing hallucinations.
-4. **Dynamic Translation & Simplification (LLM):** Used to rewrite the entire analysis on the fly to a 6th-grade reading level (Flesch-Kincaid ≤6.0) for low-literacy users, or seamlessly translate the outputs, citations, and risk severities into Spanish.
+We utilized **Gemini 1.5 Pro** across five primary areas of the application:
+1. **Vision & Layout Extraction (Gemini 1.5 Pro Vision):** Used to securely process uploads of scanned physical documents, photos, and complex PDFs. The VLM extracts both text and spatial layout (bounding boxes) to enable our "Trust is the Product" feature, where every AI claim links directly to a highlighted section on the original document image.
+2. **Analysis & Risk Flagging (Gemini 1.5 Pro LLM):** Used to generate Flesch-Kincaid ≤8.0 (plain-language) summaries of dense legal text. The LLM identifies high-risk clauses, extracts the exact source text for citations, and flags potential pitfalls.
+3. **Grounded Q&A (Gemini 1.5 Pro LLM):** Powers both single-document and multi-document chat. The LLM is strictly prompted to abstain from answering if the information is not present in the document, preventing hallucinations.
+4. **Dynamic Translation & Simplification (Gemini 1.5 Pro LLM):** Used to rewrite the entire analysis on the fly to a 6th-grade reading level (Flesch-Kincaid ≤6.0) for low-literacy users, or seamlessly translate the outputs, citations, and risk severities into Spanish.
 5. **Impact Analysis & Comparison (LLM):** Used to compare two versions of a document via topic-anchored diffs, and to generate hypothetical "breach scenarios" and financial exposure estimates for flagged clauses.
 
 ---

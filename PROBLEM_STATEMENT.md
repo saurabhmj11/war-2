@@ -24,6 +24,6 @@ Providing unauthorized practice of law (UPL) is a massive risk for AI legal tool
 
 ## Core Hackathon Requirements Met
 
-- **Generative AI Usage:** Deeply integrated utilizing Z-AI SDK (`glm-4.5v` for vision and Chat Completions for text analysis, Q&A, impact analysis, and simplification).
+- **Generative AI Usage:** Deeply integrated utilizing **Google Gemini 1.5 Pro** (via the Z-AI SDK) for both Vision and LLM Chat Completions. Gemini powers all text analysis, grounded Q&A, impact analysis, and plain-language simplification.
 - **Public Access & Size Constraint:** Open-source GitHub repository properly configured to remain under the 10MB limit (e.g., `node_modules` ignored).
 - **Demonstrable Impact:** The app is functional, safe, and immediately applicable to real-world scenarios (as documented in our 100 Use Cases).
