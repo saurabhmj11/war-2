@@ -1,6 +1,6 @@
+"use client";
 import React from 'react';
 /* eslint-disable */
-"use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { DragEvent, ChangeEvent, RefObject, ReactNode } from "react";
