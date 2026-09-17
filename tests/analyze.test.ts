@@ -1,4 +1,4 @@
-import { expect, test, describe } from "bun:test";
+import { expect, test, describe } from "vitest";
 import { detectAdvice, fleschKincaidGrade } from "../src/lib/legallens/safety";
 
 describe("Analyze Safety Guardrails", () => {

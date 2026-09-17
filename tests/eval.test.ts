@@ -1,4 +1,4 @@
-import { describe, it, expect } from "bun:test";
+import { describe, it, expect } from "vitest";
 import { detectAdvice, detectInjection, detectEscalation, fleschKincaidGrade } from "../src/lib/legallens/safety";
 import { computeTrustScore } from "../src/lib/legallens/trust";
 

@@ -1,4 +1,4 @@
-import { describe, it, expect } from "bun:test";
+import { describe, it, expect } from "vitest";
 import { POST } from "../src/app/api/legallens/upload/route";
 import { NextRequest } from "next/server";
 

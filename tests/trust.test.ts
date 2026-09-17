@@ -1,4 +1,4 @@
-import { describe, it, expect } from "bun:test";
+import { describe, it, expect } from "vitest";
 import { computeTrustScore, buildPreSigningChecklist } from "../src/lib/legallens/trust";
 import type { AnalysisResult, RiskFlag } from "../src/lib/legallens/types";
 
