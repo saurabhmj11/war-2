@@ -830,7 +830,7 @@ const RiskFlagsCard = React.memo(({
       </CardContent>
     </Card>
   );
-}
+});
 
 function RiskFlagRow({
   flag, documentId, onFocusSource,
