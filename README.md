@@ -9,7 +9,9 @@ LegalLens is a privacy-first legal document understanding web app. Drop in any l
 
 ---
 
-## Problem Statement Alignment
+## Hackathon Submission: AI for Legal Assistance & Access
+
+Our submission directly addresses the "AI for Legal Assistance & Access" hackathon track by:
 
 The civil justice gap is a mass-market failure: the Legal Services Corporation estimates ~92% of low-income Americans' civil legal problems receive inadequate or no professional help. Meanwhile, the average adult reads well below the level at which legal documents are drafted. People don't fail to understand their leases, NDAs, and severance letters because they're careless — the documents are structurally illegible to them, and professional review costs $200–500/hr.
 
