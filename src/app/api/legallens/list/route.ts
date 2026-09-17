@@ -18,13 +18,20 @@ export async function GET(_req: NextRequest) {
       },
       take: 50,
     });
-    return NextResponse.json({
-      documents: docs.map((d) => ({
-        ...d,
-        createdAt: d.createdAt.toISOString(),
-        expiresAt: d.expiresAt.toISOString(),
-      })),
-    });
+    return NextResponse.json(
+      {
+        documents: docs.map((d) => ({
+          ...d,
+          createdAt: d.createdAt.toISOString(),
+          expiresAt: d.expiresAt.toISOString(),
+        })),
+      },
+      {
+        headers: {
+          "Cache-Control": "private, no-store, max-age=0",
+        },
+      }
+    );
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "Unknown error";
     return NextResponse.json({ error: message }, { status: 500 });

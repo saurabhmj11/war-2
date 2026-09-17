@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "LegalLens — Understand what you're signing",
   description:
-    "Drop in any legal document. Get a plain-language summary, risk flags, and grounded Q&A. Every claim cites the exact source on the original page. Never advice. Always understanding.",
-  keywords: ["legal", "document understanding", "lease", "NDA", "contract review", "plain language"],
+    "Built for the 'AI for Legal Assistance & Access' challenge. Drop in any legal document. Get a plain-language summary, risk flags, and grounded Q&A. Every claim cites the exact source on the original page. Never advice. Always understanding.",
+  keywords: ["legal", "document understanding", "lease", "NDA", "contract review", "plain language", "AI for Legal Assistance & Access", "hackathon"],
   authors: [{ name: "LegalLens" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
