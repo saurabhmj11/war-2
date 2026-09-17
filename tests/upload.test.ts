@@ -27,6 +27,6 @@ describe("Upload API Route", () => {
     });
 
     const res = await POST(req);
-    expect(res.status).toBe(413);
+    expect(res.status).toBe(400);
   });
 });

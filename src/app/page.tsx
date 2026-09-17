@@ -449,7 +449,7 @@ export default function Home() {
 }
 
 // ─── Upload View ───
-function UploadView({
+const UploadView = React.memo(({
   onFile, onDrop, onPickFile, uploading, uploadProgress, fileInputRef, onFileInput,
 }: {
   onFile: (f: File) => void;
@@ -459,7 +459,7 @@ function UploadView({
   uploadProgress: number;
   fileInputRef: RefObject<HTMLInputElement | null>;
   onFileInput: (e: ChangeEvent<HTMLInputElement>) => void;
-}) {
+}) => {
   const [dragging, setDragging] = useState(false);
   return (
     <div className="max-w-3xl mx-auto py-8 md:py-16">
@@ -522,9 +522,9 @@ function UploadView({
       </p>
     </div>
   );
-}
+});
 
-function FeatureCard({ icon, title, body }: { icon: ReactNode; title: string; body: string }) {
+const FeatureCard = React.memo(({ icon, title, body }: { icon: ReactNode; title: string; body: string }) => {
   return (
     <Card className="p-4 bg-card/50">
       <div className="flex items-center gap-2 mb-2">
@@ -536,10 +536,10 @@ function FeatureCard({ icon, title, body }: { icon: ReactNode; title: string; bo
       <p className="text-xs text-muted-foreground leading-relaxed">{body}</p>
     </Card>
   );
-}
+});
 
 // ─── Results View ───
-function ResultsView({
+const ResultsView = React.memo(({
   doc, analysis, analyzing, onShowPdf, onFocusSource, showPdfViewer, highlight, onHighlightConsumed,
   onRegenerate, level, language, onLevelChange, onLanguageChange, onExport,
   onChecklistCitationClick, allDocs, onMultiAskFocusSource,
@@ -561,7 +561,7 @@ function ResultsView({
   onChecklistCitationClick: (docId: string, page: number, bbox?: [number, number, number, number]) => void;
   allDocs: DocumentMeta[];
   onMultiAskFocusSource: (docId: string, page: number, bbox?: [number, number, number, number]) => void;
-}) {
+}) => {
   if (analyzing || !analysis) {
     return (
       <div className="max-w-3xl mx-auto py-16 text-center">
@@ -673,9 +673,9 @@ function ResultsView({
       </div>
     </div>
   );
-}
+});
 
-function SettingsToolbar({
+const SettingsToolbar = React.memo(({
   level, language, onLevelChange, onLanguageChange, onRegenerate, onExport, fkGrade,
 }: {
   level: "simpler" | "standard";
@@ -685,7 +685,7 @@ function SettingsToolbar({
   onRegenerate: () => void;
   onExport: () => void;
   fkGrade: number;
-}) {
+}) => {
   return (
     <Card className="p-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
@@ -750,16 +750,16 @@ function SettingsToolbar({
       </div>
     </Card>
   );
-}
+});
 
-function SummaryTopCard({
+const SummaryTopCard = React.memo(({
   analysis, doc, onFocusSource, onShowPdf,
 }: {
   analysis: AnalysisResult;
   doc: DocumentMeta;
   onFocusSource: (page: number, bbox?: [number, number, number, number]) => void;
   onShowPdf: () => void;
-}) {
+}) => {
   return (
     <Card>
       <CardHeader className="pb-3">
@@ -794,9 +794,9 @@ function SummaryTopCard({
       </CardContent>
     </Card>
   );
-}
+});
 
-function RiskFlagsCard({
+const RiskFlagsCard = React.memo(({
   flags, documentId, onFocusSource,
 }: {
   flags: RiskFlag[];

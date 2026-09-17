@@ -10,6 +10,7 @@ import type { QaResult } from "@/lib/legallens/types";
 import { LEGAL_AID_REFERRALS } from "@/lib/legallens/types";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const QA_USER_PROMPT_TEMPLATE = `A user uploaded a legal document and asked a question. Answer the question using ONLY information from the document. You MUST respond with strict JSON matching this TypeScript interface — no preamble, no markdown fences, no commentary:

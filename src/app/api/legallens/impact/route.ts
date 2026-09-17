@@ -12,6 +12,7 @@ import { SYSTEM_PROMPT_V1_1 } from "@/lib/legallens/system-prompt";
 import { detectAdvice } from "@/lib/legallens/safety";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 export interface ImpactAnalysis {

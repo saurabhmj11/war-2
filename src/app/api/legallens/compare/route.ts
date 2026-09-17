@@ -9,6 +9,7 @@ import { SYSTEM_PROMPT_V1_1, DISCLAIMER_TEXT } from "@/lib/legallens/system-prom
 import { detectAdvice, detectEscalation } from "@/lib/legallens/safety";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 120;
 
 export interface CompareRow {

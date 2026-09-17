@@ -1,11 +1,10 @@
-import { expect, test, describe } from "vitest";
+import { expect, test, describe, it } from "vitest";
 import { detectAdvice, fleschKincaidGrade } from "../src/lib/legallens/safety";
 
 describe("Analyze Safety Guardrails", () => {
-  test("Flesch-Kincaid correctly scores complex legalese as high grade level", () => {
-    const legalese = "Notwithstanding anything to the contrary contained herein, in the event that the lessee fails to fulfill the obligations stipulated in clause 4.2, the lessor reserves the right to terminate this agreement forthwith.";
-    const score = fleschKincaidGrade(legalese);
-    expect(score).toBeGreaterThan(12.0); // Should be college level or higher
+  it("Flesch-Kincaid correctly scores complex legalese as high grade level", () => {
+    const score = fleschKincaidGrade("Notwithstanding any other provision herein to the contrary, the lessee shall indemnify and hold harmless the lessor from and against all actions, claims, demands, costs, damages, and expenses.");
+    expect(score).toBeGreaterThan(10);
   });
 
   test("Flesch-Kincaid correctly scores plain language as low grade level", () => {

@@ -12,6 +12,7 @@ import type { AnalysisResult } from "@/lib/legallens/types";
 import { LEGAL_AID_REFERRALS } from "@/lib/legallens/types";
 
 export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 export const maxDuration = 120; // LLM call can take a while
 
 export type ReadingLevel = "simpler" | "standard";
